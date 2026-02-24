@@ -59,3 +59,59 @@ public class DownPat
     private string Reverse(string s) =>
         new string(s.Reverse().ToArray());
 }
+
+//1b. - 4 
+//1c. - 24! = 6.204484e+23
+
+//Q2 - Window Cleaner
+public class WindowDressing
+{
+    Dictionary<string, int> cache = new Dictionary<string, int>();
+    Queue<string> queue = new Queue<string>();
+    public int maxLength { get; }
+    public string add(string s)
+    {
+        if (s.Length == 0) return "A";
+        if (s.Length == maxLength) return s;
+        int highest = 0;
+        char[] chars = s.ToCharArray();
+        foreach (char c in chars)
+        {
+            int ascii = (int)c;
+            if (ascii > highest)
+            {
+                highest = ascii;
+            }
+        }
+        return s + (char)(highest + 1);
+    }
+    public string rotate(string s)
+    {
+        if (s.Length < 2) return s;
+        return s.Substring(1) + s[0];
+    }
+    public string swap(string s)
+    {
+        if (s.Length < 2) return s;
+        return s[1] + s[0] + s.Substring(2);
+    }
+    public WindowDressing(string finalString)
+    {
+        maxLength = finalString.Length;
+        cache.Add(add(""), 1);
+        cache.Add(add("A"), 2);
+        queue.Enqueue(add(""));
+        queue.Enqueue(add("A"));
+        
+    }
+}
+
+
+
+static string IntList(int start, int digit)
+{
+    for (int i = 0; i < digit; i++)
+    {
+        
+    }
+}
